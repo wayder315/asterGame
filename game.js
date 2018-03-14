@@ -74,27 +74,32 @@ fon.onload = function (){
 };
 
 function game(){
-		for (i in aster) {
-		if (Math.abs (aster[i].x - ship.x)<50 && Math.abs (aster[i].y+25 -ship.y-15)<25) {
+	render();
+	update();
+	for (i in aster) {
+		if (Math.abs (aster[i].x - ship.x)<20 && Math.abs (aster[i].y+20 -ship.y-18)<30) {
 			context.drawImage (gameOver, 150, 200, 300, 200);
 			var regame = document.getElementById('reGame');
 			regame.style.opacity = 1;
 			return;
 		};
 	};
-	render();
-	update();
 	requestAnimFrame(game);
 };
 
 function render (){
+	if (+(window.self.outerWidth) < 1160) {
+		document.getElementById("leaderBoard").style.opacity = 0;
+	} else {
+		document.getElementById("leaderBoard").style.opacity = 1;
+	};
 	context.drawImage (fon, 0, 0, 600, 600);
 	context.drawImage (shiping, ship.x, ship.y, 30, 60);
 	for (i in expl) context.drawImage (explosion, expl[i].x, expl[i].y, 60, 60);
 /*	for (i in aster) context.drawImage (asteroid, aster[i].x, aster[i].y, 50, 50);
 */	for (i in fire) context.drawImage (fireing, fire[i].x, fire[i].y, 30, 30);
-
-		for (i in aster) {
+	
+	for (i in aster) {
 	//вращение астероидов
 		context.save();
 		context.translate(aster[i].x+25, aster[i].y+25);
@@ -151,7 +156,7 @@ function update (){
 		del:0
 		});
 	};
-	if (timer%3 == 0 && timer> 2000) {
+	if (timer%4 == 0 && timer> 2000) {
 		aster.push({
 		angle: 0,
 		dxangle:Math.random()*0.2-0.1,
@@ -200,4 +205,3 @@ function update (){
 var elem = document.getElementById("score");
 elem.innerHTML = "score = "+score
 };
-
