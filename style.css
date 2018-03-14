@@ -7,7 +7,6 @@ body {
 	font-size: 50px;
 	font-family: verdana;
 	color: white;
-	float: center;
 	margin: 0 0 0 100px;
 }
 #wrapper {
@@ -33,7 +32,6 @@ canvas {
 	top: 100px;
 	left: 50px;
 	background-color: black;
-	display: center;
 }
 h1 {
 	font-size: 30px;
