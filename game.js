@@ -8,7 +8,7 @@ var requestAnimFrame =  (function abs(){
 	window.oRequestAnimationFrame ||
 	window.msRequestAnimationFrame ||
 	function (callback){
-		window.setTimeout (callback, 1000 /20);
+		window.setTimeout (callback, 1000 /50);
 	};
 })();
 
@@ -81,6 +81,7 @@ function game(){
 			context.drawImage (gameOver, 150, 200, 300, 200);
 			var regame = document.getElementById('reGame');
 			regame.style.opacity = 1;
+			document.getElementById("fuckedUp").play();
 			return;
 		};
 	};
@@ -205,3 +206,4 @@ function update (){
 var elem = document.getElementById("score");
 elem.innerHTML = "score = "+score
 };
+
